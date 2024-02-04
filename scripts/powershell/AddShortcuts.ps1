@@ -16,8 +16,10 @@ $Shortcut.TargetPath = $TargetFile
 $Shortcut.Arguments = "https://signin.v1.trendmicro.com/"
 $Shortcut.Save()
 
-# Disable Edge fist-run wizard
+# disable Server Manager startup
+Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask -Verbose
 
+# Disable Edge fist-run wizard
 $settings = 
 [PSCustomObject]@{
     Path  = "SOFTWARE\Policies\Microsoft\Edge"
